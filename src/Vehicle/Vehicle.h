@@ -348,6 +348,7 @@ public:
     Q_PROPERTY(Fact* altitudeRelative   READ altitudeRelative   CONSTANT)
     Q_PROPERTY(Fact* altitudeAMSL       READ altitudeAMSL       CONSTANT)
     Q_PROPERTY(Fact* flightDistance     READ flightDistance     CONSTANT)
+    Q_PROPERTY(Fact* distanceToHome     READ distanceToHome     CONSTANT)
 
     Q_PROPERTY(FactGroup* gps         READ gpsFactGroup         CONSTANT)
     Q_PROPERTY(FactGroup* battery     READ batteryFactGroup     CONSTANT)
@@ -613,6 +614,7 @@ public:
     Fact* altitudeRelative  (void) { return &_altitudeRelativeFact; }
     Fact* altitudeAMSL      (void) { return &_altitudeAMSLFact; }
     Fact* flightDistance    (void) { return &_flightDistanceFact; }
+    Fact* distanceToHome    (void) { return &_distanceToHomeFact; }
 
     FactGroup* gpsFactGroup         (void) { return &_gpsFactGroup; }
     FactGroup* batteryFactGroup     (void) { return &_batteryFactGroup; }
@@ -636,6 +638,10 @@ public:
     ///     @param showError true: Display error to user if command failed, false:  no error shown
     /// Signals: mavCommandResult on success or failure
     void sendMavCommand(int component, MAV_CMD command, bool showError, float param1 = 0.0f, float param2 = 0.0f, float param3 = 0.0f, float param4 = 0.0f, float param5 = 0.0f, float param6 = 0.0f, float param7 = 0.0f);
+
+    /// Same as sendMavCommand but available from Qml.
+    Q_INVOKABLE void sendCommand(int component, int command, bool showError, double param1 = 0.0f, double param2 = 0.0f, double param3 = 0.0f, double param4 = 0.0f, double param5 = 0.0f, double param6 = 0.0f, double param7 = 0.0f)
+        { sendMavCommand(component, (MAV_CMD)command, showError, param1, param2, param3, param4, param5, param6, param7); }
 
     int firmwareMajorVersion(void) const { return _firmwareMajorVersion; }
     int firmwareMinorVersion(void) const { return _firmwareMinorVersion; }
@@ -821,6 +827,7 @@ private slots:
     void _activeJoystickChanged(void);
     void _clearTrajectoryPoints(void);
     void _clearCameraTriggerPoints(void);
+    void _updateDistanceToHome(void);
 
 private:
     bool _containsLink(LinkInterface* link);
@@ -1038,6 +1045,7 @@ private:
     Fact _altitudeAMSLFact;
     Fact _flightDistanceFact;
     Fact _flightTimeFact;
+    Fact _distanceToHomeFact;
 
     VehicleGPSFactGroup         _gpsFactGroup;
     VehicleBatteryFactGroup     _batteryFactGroup;
@@ -1055,6 +1063,7 @@ private:
     static const char* _altitudeAMSLFactName;
     static const char* _flightDistanceFactName;
     static const char* _flightTimeFactName;
+    static const char* _distanceToHomeFactName;
 
     static const char* _gpsFactGroupName;
     static const char* _batteryFactGroupName;
