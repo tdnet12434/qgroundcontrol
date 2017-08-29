@@ -245,7 +245,7 @@ public:
     virtual QString brandImageOutdoor(const Vehicle* vehicle) const { Q_UNUSED(vehicle) return QString(); }
 
     /// Return the resource file which contains the vehicle icon used in the flight view when the view is dark (Satellite for instance)
-    virtual QString vehicleImageOpaque(const Vehicle* vehicle) const;
+    virtual QString vehicleImageOpaque(const Vehicle *vehicle);
 
     /// Return the resource file which contains the vehicle icon used in the flight view when the view is light (Map for instance)
     virtual QString vehicleImageOutline(const Vehicle* vehicle) const;

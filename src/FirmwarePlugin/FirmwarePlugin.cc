@@ -304,10 +304,15 @@ int FirmwarePlugin::remapParamNameHigestMinorVersionNumber(int majorVersionNumbe
     return 0;
 }
 
-QString FirmwarePlugin::vehicleImageOpaque(const Vehicle* vehicle) const
+QString FirmwarePlugin::vehicleImageOpaque(const Vehicle* vehicle)
 {
-    Q_UNUSED(vehicle);
-    return QStringLiteral("/qmlimages/vehicleArrowOpaque.svg");
+    //Q_UNUSED(vehicle);
+//    int id = vehicle->id();
+
+//    if(id==1)
+        return QStringLiteral("/qmlimages/vehicleArrowOpaque.svg");
+//    else
+//        return QStringLiteral("/qmlimages/MapCenterBlack.svg");
 }
 
 QString FirmwarePlugin::vehicleImageOutline(const Vehicle* vehicle) const
