@@ -871,6 +871,12 @@ void PlanManager::_handleMissionCurrent(const mavlink_message_t& message)
 
     mavlink_msg_mission_current_decode(&message, &missionCurrent);
 
+    if(!_vehicle->armed() && _currentMissionIndex!=0) {
+        _currentMissionIndex = 0;
+        _resumeMission = false;
+        emit currentIndexChanged(0);
+    }
+
     if (missionCurrent.seq != _currentMissionIndex) {
         qCDebug(PlanManagerLog) << QStringLiteral("_handleMissionCurrent %1 currentIndex:").arg(_planTypeString()) << missionCurrent.seq;
         _currentMissionIndex = missionCurrent.seq;
