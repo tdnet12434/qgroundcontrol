@@ -224,7 +224,8 @@ QT += \
     sql \
     svg \
     widgets \
-    xml
+    xml \
+    texttospeech
 
 # Multimedia only used if QVC is enabled
 !contains (DEFINES, QGC_DISABLE_UVC) {
@@ -333,6 +334,7 @@ INCLUDEPATH += \
     src \
     src/api \
     src/AnalyzeView \
+    src/Camera \
     src/AutoPilotPlugins \
     src/FlightDisplay \
     src/FlightMap \
@@ -390,11 +392,13 @@ FORMS += \
 HEADERS += \
     src/api/QGCCorePlugin.h \
     src/api/QGCOptions.h \
+    src/api/QGCSettings.h \
     src/api/QmlComponentInfo.h \
 
 SOURCES += \
     src/api/QGCCorePlugin.cc \
     src/api/QGCOptions.cc \
+    src/api/QGCSettings.cc \
     src/api/QmlComponentInfo.cc \
 
 #
@@ -485,6 +489,9 @@ HEADERS += \
     src/AnalyzeView/ExifParser.h \
     src/AnalyzeView/ULogParser.h \
     src/AnalyzeView/PX4LogParser.h \
+    src/Camera/QGCCameraControl.h \
+    src/Camera/QGCCameraIO.h \
+    src/Camera/QGCCameraManager.h \
     src/CmdLineOptParser.h \
     src/FirmwarePlugin/PX4/px4_custom_mode.h \
     src/FlightDisplay/VideoManager.h \
@@ -501,6 +508,7 @@ HEADERS += \
     src/MissionManager/FixedWingLandingComplexItem.h \
     src/MissionManager/GeoFenceController.h \
     src/MissionManager/GeoFenceManager.h \
+    src/MissionManager/KML.h \
     src/MissionManager/MissionCommandList.h \
     src/MissionManager/MissionCommandTree.h \
     src/MissionManager/MissionCommandUIInfo.h \
@@ -521,6 +529,7 @@ HEADERS += \
     src/MissionManager/SimpleMissionItem.h \
     src/MissionManager/Section.h \
     src/MissionManager/SpeedSection.h \
+    src/MissionManager/StructureScanComplexItem.h \
     src/MissionManager/SurveyMissionItem.h \
     src/MissionManager/VisualMissionItem.h \
     src/PositionManager/PositionManager.h \
@@ -553,6 +562,7 @@ HEADERS += \
     src/QtLocationPlugin/QMLControl/QGCMapEngineManager.h \
     src/Settings/AppSettings.h \
     src/Settings/AutoConnectSettings.h \
+    src/Settings/BrandImageSettings.h \
     src/Settings/FlightMapSettings.h \
     src/Settings/GuidedSettings.h \
     src/Settings/RTKSettings.h \
@@ -563,7 +573,6 @@ HEADERS += \
     src/Terrain.h \
     src/Vehicle/MAVLinkLogManager.h \
     src/VehicleSetup/JoystickConfigController.h \
-    src/audio/QGCAudioWorker.h \
     src/comm/LinkConfiguration.h \
     src/comm/LinkInterface.h \
     src/comm/LinkManager.h \
@@ -658,7 +667,6 @@ HEADERS += \
 
 iOSBuild {
     OBJECTIVE_SOURCES += \
-        src/audio/QGCAudioWorker_iOS.mm \
         src/MobileScreenMgr.mm \
 }
 
@@ -671,6 +679,9 @@ SOURCES += \
     src/AnalyzeView/ExifParser.cc \
     src/AnalyzeView/ULogParser.cc \
     src/AnalyzeView/PX4LogParser.cc \
+    src/Camera/QGCCameraControl.cc \
+    src/Camera/QGCCameraIO.cc \
+    src/Camera/QGCCameraManager.cc \
     src/CmdLineOptParser.cc \
     src/FlightDisplay/VideoManager.cc \
     src/FlightMap/Widgets/ValuesWidgetController.cc \
@@ -685,6 +696,7 @@ SOURCES += \
     src/MissionManager/FixedWingLandingComplexItem.cc \
     src/MissionManager/GeoFenceController.cc \
     src/MissionManager/GeoFenceManager.cc \
+    src/MissionManager/KML.cc \
     src/MissionManager/MissionCommandList.cc \
     src/MissionManager/MissionCommandTree.cc \
     src/MissionManager/MissionCommandUIInfo.cc \
@@ -704,6 +716,7 @@ SOURCES += \
     src/MissionManager/RallyPointManager.cc \
     src/MissionManager/SimpleMissionItem.cc \
     src/MissionManager/SpeedSection.cc \
+    src/MissionManager/StructureScanComplexItem.cc \
     src/MissionManager/SurveyMissionItem.cc \
     src/MissionManager/VisualMissionItem.cc \
     src/PositionManager/PositionManager.cpp \
@@ -734,6 +747,7 @@ SOURCES += \
     src/QtLocationPlugin/QMLControl/QGCMapEngineManager.cc \
     src/Settings/AppSettings.cc \
     src/Settings/AutoConnectSettings.cc \
+    src/Settings/BrandImageSettings.cc \
     src/Settings/FlightMapSettings.cc \
     src/Settings/GuidedSettings.cc \
     src/Settings/RTKSettings.cc \
@@ -744,7 +758,6 @@ SOURCES += \
     src/Terrain.cc \
     src/Vehicle/MAVLinkLogManager.cc \
     src/VehicleSetup/JoystickConfigController.cc \
-    src/audio/QGCAudioWorker.cpp \
     src/comm/LinkConfiguration.cc \
     src/comm/LinkInterface.cc \
     src/comm/LinkManager.cc \

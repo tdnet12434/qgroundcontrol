@@ -1161,7 +1161,7 @@ int SurveyMissionItem::_appendWaypointToMission(QList<MissionItem*>& items, int 
         item = new MissionItem(seqNum++,
                                MAV_CMD_IMAGE_START_CAPTURE,
                                MAV_FRAME_MISSION,
-                               0,                           // Camera ID, all cameras
+                               0,                           // Reserved (Set to 0)
                                0,                           // Interval (none)
                                1,                           // Take 1 photo
                                NAN, NAN, NAN, NAN,          // param 4-7 reserved
@@ -1322,7 +1322,7 @@ double SurveyMissionItem::timeBetweenShots(void) const
     return _cruiseSpeed == 0 ? 0 : _triggerDistance() / _cruiseSpeed;
 }
 
-void SurveyMissionItem::setMissionFlightStatus  (MissionController::MissionFlightStatus_t& missionFlightStatus)
+void SurveyMissionItem::setMissionFlightStatus(MissionController::MissionFlightStatus_t& missionFlightStatus)
 {
     ComplexMissionItem::setMissionFlightStatus(missionFlightStatus);
     if (!qFuzzyCompare(_cruiseSpeed, missionFlightStatus.vehicleSpeed)) {

@@ -21,6 +21,7 @@
 #include "SensorsComponentController.h"
 #include "PowerComponentController.h"
 #include "RadioComponentController.h"
+#include "QGCCameraManager.h"
 
 #include <QDebug>
 
@@ -125,6 +126,10 @@ PX4FirmwarePlugin::PX4FirmwarePlugin(void)
     }
 }
 
+PX4FirmwarePlugin::~PX4FirmwarePlugin()
+{
+}
+
 AutoPilotPlugin* PX4FirmwarePlugin::autopilotPlugin(Vehicle* vehicle)
 {
     return new PX4AutoPilotPlugin(vehicle, vehicle);
@@ -220,18 +225,14 @@ int PX4FirmwarePlugin::manualControlReservedButtonCount(void)
     return 0;   // 0 buttons reserved for rc switch simulation
 }
 
-bool PX4FirmwarePlugin::supportsManualControl(void)
-{
-    return true;
-}
-
 bool PX4FirmwarePlugin::isCapable(const Vehicle *vehicle, FirmwareCapabilities capabilities)
 {
-    if (vehicle->multiRotor()) {
-        return (capabilities & (MavCmdPreflightStorageCapability | GuidedModeCapability | SetFlightModeCapability | PauseVehicleCapability /*| OrbitModeCapability still NYI*/)) == capabilities;
-    } else {
-        return (capabilities & (MavCmdPreflightStorageCapability | GuidedModeCapability | SetFlightModeCapability | PauseVehicleCapability)) == capabilities;
+    int available = MavCmdPreflightStorageCapability | SetFlightModeCapability | PauseVehicleCapability | GuidedModeCapability;
+    if (vehicle->multiRotor() || vehicle->vtol()) {
+        available |= TakeoffVehicleCapability;
     }
+
+    return (capabilities & available) == capabilities;
 }
 
 void PX4FirmwarePlugin::initializeVehicle(Vehicle* vehicle)
@@ -271,6 +272,7 @@ QList<MAV_CMD> PX4FirmwarePlugin::supportedMissionCommands(void)
          << MAV_CMD_DO_SET_SERVO
          << MAV_CMD_DO_CHANGE_SPEED
          << MAV_CMD_DO_LAND_START
+         << MAV_CMD_DO_SET_ROI
          << MAV_CMD_DO_MOUNT_CONFIGURE
          << MAV_CMD_DO_MOUNT_CONTROL
          << MAV_CMD_SET_CAMERA_MODE
@@ -549,3 +551,15 @@ bool PX4FirmwarePlugin::vehicleYawsToNextWaypointInMission(const Vehicle* vehicl
     }
     return true;
 }
+
+QGCCameraManager* PX4FirmwarePlugin::createCameraManager(Vehicle* vehicle)
+{
+    return new QGCCameraManager(vehicle);
+}
+
+QGCCameraControl* PX4FirmwarePlugin::createCameraControl(const mavlink_camera_information_t* info, Vehicle *vehicle, int compID, QObject* parent)
+{
+    return new QGCCameraControl(info, vehicle, compID, parent);
+}
+
+
