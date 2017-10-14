@@ -192,6 +192,20 @@ Item {
         }
     }
 
+    Timer {
+        id:         delayedMessageCloseTimer
+        interval:   1500
+        running:    false
+        repeat:     false
+
+        onTriggered: {
+            criticalMmessageArea.visible = false
+            criticalMmessageArea.close()
+        }
+    }
+
+
+
     property var messageQueue: []
 
     function showMessage(message) {
@@ -200,6 +214,7 @@ Item {
         } else {
             criticalMessageText.text = message
             criticalMmessageArea.visible = true
+            delayedMessageCloseTimer.start()
         }
     }
 
@@ -484,7 +499,7 @@ Item {
         anchors.top:                parent.top
         anchors.topMargin:          toolBar.height + ScreenTools.defaultFontPixelHeight / 2
         border.color:               qgcPal.alertBorder
-        border.width:               2
+        border.width:               0
 
         readonly property real _textMargins: ScreenTools.defaultFontPixelHeight
 
