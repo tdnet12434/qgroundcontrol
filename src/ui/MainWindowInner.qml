@@ -203,7 +203,7 @@ Item {
 
     Timer {
         id:         delayedMessageCloseTimer
-        interval:   1500
+        interval:   2500
         running:    false
         repeat:     false
 
@@ -512,6 +512,16 @@ Item {
         anchors.topMargin:          toolBar.height + ScreenTools.defaultFontPixelHeight / 2
         border.color:               qgcPal.alertBorder
         border.width:               0
+
+        PropertyAnimation on opacity {
+            easing.type:    Easing.OutQuart
+            from:           0.0
+            to:             0.8
+            loops:          1
+            running:        criticalMmessageArea.visible
+            alwaysRunToEnd: true
+            duration:       2000
+        }
 
         readonly property real _textMargins: ScreenTools.defaultFontPixelHeight
 

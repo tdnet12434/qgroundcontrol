@@ -146,9 +146,9 @@ SetupPage {
 
             Component.onCompleted: {
                 var usingUDP = controller.usingUDPLink()
-                if (usingUDP && !_wifiReliableForCalibration) {
-                    showMessage("Sensor Calibration", "Performing sensor calibration over a WiFi connection is known to be unreliable. You should disconnect and perform calibration using a direct USB connection instead.", StandardButton.Ok)
-                }
+//                if (usingUDP && !_wifiReliableForCalibration) {
+//                    showMessage("Sensor Calibration", "Performing sensor calibration over a WiFi connection is known to be unreliable. You should disconnect and perform calibration using a direct USB connection instead.", StandardButton.Ok)
+//                }
             }
 
             Component {

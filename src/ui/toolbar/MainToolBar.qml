@@ -92,18 +92,18 @@ Rectangle {
                 anchors.bottom:     parent.bottom
                 exclusiveGroup:     mainActionGroup
                 source:             "/res/QGCLogoWhite"
-                logo:               true
+//                logo:               true
                 onClicked:          toolBar.showSettingsView()
-                visible:            !QGroundControl.corePlugin.options.combineSettingsAndSetup
+//                visible:            !QGroundControl.corePlugin.options.combineSettingsAndSetup
             }
 
             QGCToolBarButton {
-                id:                 setupButton
+                id:                 flyButton
                 anchors.top:        parent.top
                 anchors.bottom:     parent.bottom
                 exclusiveGroup:     mainActionGroup
-                source:             "/qmlimages/Gears.svg"
-                onClicked:          toolBar.showSetupView()
+                source:             "/qmlimages/PaperPlane.svg"
+                onClicked:          toolBar.showFlyView()
             }
 
             QGCToolBarButton {
@@ -116,12 +116,12 @@ Rectangle {
             }
 
             QGCToolBarButton {
-                id:                 flyButton
+                id:                 setupButton
                 anchors.top:        parent.top
                 anchors.bottom:     parent.bottom
                 exclusiveGroup:     mainActionGroup
-                source:             "/qmlimages/PaperPlane.svg"
-                onClicked:          toolBar.showFlyView()
+                source:             "/qmlimages/Gears.svg"
+                onClicked:          toolBar.showSetupView()
             }
 
             QGCToolBarButton {
@@ -149,7 +149,7 @@ Rectangle {
         QGCButton {
             id:                     vehicleSelectorButton
             width:                  ScreenTools.defaultFontPixelHeight * 8
-            text:                   "Vehicle " + (_activeVehicle ? _activeVehicle.id : "None")
+            text:                   (_activeVehicle ? (_activeVehicle.id === 1 ? "UAV":(_activeVehicle.id === 2 ? "NET":"Vehicle " + _activeVehicle.id)) : "None")
             visible:                QGroundControl.multiVehicleManager.vehicles.count > 1
             anchors.verticalCenter: parent.verticalCenter
 
@@ -182,7 +182,7 @@ Rectangle {
                 // Add new items
                 for (var i=0; i<QGroundControl.multiVehicleManager.vehicles.count; i++) {
                     var vehicle = QGroundControl.multiVehicleManager.vehicles.get(i)
-                    var menuItem = vehicleMenuItemComponent.createObject(null, { "text": "Vehicle " + vehicle.id })
+                    var menuItem = vehicleMenuItemComponent.createObject(null, { "text": (vehicle.id === 1 ? "UAV 1":(vehicle.id === 2 ? "NET 2":"Vehicle " + vehicle.id)) })
                     vehicleMenuItems.push(menuItem)
                     vehicleMenu.insertItem(i, menuItem)
                 }

@@ -60,6 +60,7 @@ Rectangle {
     property bool   _batteryInfoAvailable:      _batteryChangePoint >= 0 || _batteriesRequired >= 0
     property real   _controllerProgressPct:     _controllerValid ? planMasterController.missionController.progressPct : 0
     property bool   _syncInProgress:            _controllerValid ? planMasterController.missionController.syncInProgress : false
+    property bool   _uploading:                 false
 
     property string _distanceText:              isNaN(_distance) ?              "-.-" : QGroundControl.metersToAppSettingsDistanceUnits(_distance).toFixed(1) + " " + QGroundControl.appSettingsDistanceUnitsString
     property string _altDifferenceText:         isNaN(_altDifference) ?         "-.-" : QGroundControl.metersToAppSettingsDistanceUnits(_altDifference).toFixed(1) + " " + QGroundControl.appSettingsDistanceUnitsString
@@ -103,13 +104,48 @@ Rectangle {
             id:                 settingsButton
             anchors.top:        parent.top
             anchors.bottom:     parent.bottom
+            exclusiveGroup:     mainActionGroup
+            source:             "/res/QGCLogoWhite"
+//                logo:               true
+            onClicked:          toolBar.showSettingsView()
+//                visible:            !QGroundControl.corePlugin.options.combineSettingsAndSetup
+        }
+
+        QGCToolBarButton {
+            id:                 flyButton
+            anchors.top:        parent.top
+            anchors.bottom:     parent.bottom
+            exclusiveGroup:     mainActionGroup
             source:             "/qmlimages/PaperPlane.svg"
-            logo:               true
-            checked:            false
-            onClicked: {
-                checked = false
-                showFlyView()
-            }
+            onClicked:          toolBar.showFlyView()
+        }
+
+        QGCToolBarButton {
+            id:                 planButton
+            anchors.top:        parent.top
+            anchors.bottom:     parent.bottom
+            exclusiveGroup:     mainActionGroup
+            source:             "/qmlimages/Plan.svg"
+            onClicked:          toolBar.showPlanView()
+        }
+
+        QGCToolBarButton {
+            id:                 setupButton
+            anchors.top:        parent.top
+            anchors.bottom:     parent.bottom
+            exclusiveGroup:     mainActionGroup
+            source:             "/qmlimages/Gears.svg"
+            onClicked:          toolBar.showSetupView()
+        }
+
+        QGCToolBarButton {
+            id:                 analyzeButton
+            anchors.top:        parent.top
+            anchors.bottom:     parent.bottom
+            exclusiveGroup:     mainActionGroup
+            source:             "/qmlimages/Analyze.svg"
+            visible:            !ScreenTools.isMobile && QGroundControl.corePlugin.showAdvancedUI
+            onClicked:          toolBar.showAnalyzeView()
         }
     }
 
@@ -120,6 +156,8 @@ Rectangle {
             missionStats.visible = false
             uploadCompleteText.visible = true
             resetProgressTimer.start()
+
+
         } else if (_controllerProgressPct > 0) {
             progressBar.visible = true
         }
@@ -132,6 +170,12 @@ Rectangle {
             missionStats.visible = true
             uploadCompleteText.visible = false
             progressBar.visible = false
+            if(_uploading){
+                _uploading = false
+                planMasterController.loadFromVehicle()
+            }
+
+
         }
     }
 
@@ -154,7 +198,7 @@ Rectangle {
         font.pointSize:         ScreenTools.largeFontPointSize
         horizontalAlignment:    Text.AlignHCenter
         verticalAlignment:      Text.AlignVCenter
-        text:                   "Done"
+        text:                   (_uploading ? "Upload Done.. Downloading Back to GCS":"Done")
         visible:                false
     }
 
@@ -298,11 +342,14 @@ Rectangle {
         anchors.rightMargin:    _margins
         anchors.right:          parent.right
         anchors.verticalCenter: parent.verticalCenter
-        text:                   _controllerDirty ? qsTr("Upload Required") : qsTr("Upload")
+        text:                   _controllerDirty ? qsTr("Upload&Download Required") : qsTr("Upload&Download")
         enabled:                !_controllerSyncInProgress
         visible:                !_controllerOffline && !_controllerSyncInProgress && !uploadCompleteText.visible
         primary:                _controllerDirty
-        onClicked:              planMasterController.upload()
+        onClicked: {
+            _uploading = true;
+            planMasterController.upload()
+        }
 
         PropertyAnimation on opacity {
             easing.type:    Easing.OutQuart
