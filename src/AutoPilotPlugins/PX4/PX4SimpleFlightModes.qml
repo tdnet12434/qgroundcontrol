@@ -137,6 +137,7 @@ Item {
                             anchors.top:        parent.top
                             spacing:            ScreenTools.defaultFontPixelHeight
 
+
                             Row {
                                 spacing: ScreenTools.defaultFontPixelWidth
 
@@ -156,6 +157,24 @@ Item {
                                 }
                             }
 
+                            Row {
+                                spacing: ScreenTools.defaultFontPixelWidth
+
+                                property Fact fact: controller.getParameterFact(-1, "RC_MAP_AUTPID_SW")
+
+                                QGCLabel {
+                                    anchors.baseline:   autopidCombo.baseline
+                                    text:               "Autotune switch:"
+                                    color:              parent.fact.value == 0 ? qgcPal.text : (controller.rcChannelValues[parent.fact.value - 1] >= 1500 ? "yellow" : qgcPal.text)
+                                }
+
+                                FactComboBox {
+                                    id:         autopidCombo
+                                    width:      _channelComboWidth
+                                    fact:       parent.fact
+                                    indexModel: false
+                                }
+                            }
                             Row {
                                 spacing: ScreenTools.defaultFontPixelWidth
 

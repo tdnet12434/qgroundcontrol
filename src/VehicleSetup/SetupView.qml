@@ -244,17 +244,17 @@ Rectangle {
                 onClicked: showSummaryPanel()
             }
 
-//            SubMenuButton {
-//                id:                 firmwareButton
-//                imageResource:      "/qmlimages/FirmwareUpgradeIcon.png"
-//                setupIndicator:     false
-//                exclusiveGroup:     setupButtonGroup
-//                visible:            !ScreenTools.isMobile && _corePlugin.options.showFirmwareUpgrade
-//                text:               qsTr("Firmware")
-//                Layout.fillWidth:   true
+            SubMenuButton {
+                id:                 firmwareButton
+                imageResource:      "/qmlimages/FirmwareUpgradeIcon.png"
+                setupIndicator:     false
+                exclusiveGroup:     setupButtonGroup
+                visible:            !ScreenTools.isMobile && _corePlugin.options.showFirmwareUpgrade
+                text:               qsTr("Firmware")
+                Layout.fillWidth:   true
 
-//                onClicked: showFirmwarePanel()
-//            }
+                onClicked: showFirmwarePanel()
+            }
 
             SubMenuButton {
                 id:                 px4FlowButton

@@ -63,6 +63,21 @@ Item {
         }
 
         Image {
+            id:                 pointer2
+            source:             vehicle ? vehicle.vehicleImageCompass : ""
+            mipmap:             true
+            width:              size * 0.65
+            sourceSize.width:   width
+            fillMode:           Image.PreserveAspectFit
+            anchors.centerIn:   parent
+            transform: Rotation {
+                origin.x:       pointer2.width  / 2
+                origin.y:       pointer2.height / 2
+                angle:          _heading / 2
+            }
+        }
+
+        Image {
             id:                 compassDial
             source:             "/qmlimages/compassInstrumentDial.svg"
             mipmap:             true

@@ -25,6 +25,16 @@ SetupPage {
             qgcViewPanel:   tuningPage.viewPanel
 
             sliderModel: ListModel {
+
+                ListElement {
+                    title:          "Autotune Level"
+                    description:    "Slide to the left to make roll/pitch control smoother or to the right for more agressive."
+                    param:          "FW_AUTOPID"
+                    min:            1
+                    max:            10
+                    step:           1
+                }
+
                 ListElement {
                     title:          "Roll sensitivity"
                     description:    "Slide to the left to make roll control faster and more accurate. Slide to the right if roll oscillates or is too twitchy."
