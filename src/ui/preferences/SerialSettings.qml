@@ -32,7 +32,7 @@ Item {
         spacing:    ScreenTools.defaultFontPixelHeight / 2
         QGCLabel {
             id:     serialLabel
-            text:   qsTr("Serial Link Settings")
+            text:   qsTr("ตั้งค่า Serial ")
         }
         Rectangle {
             height: 1
@@ -46,7 +46,7 @@ Item {
         Row {
             spacing:    ScreenTools.defaultFontPixelWidth
             QGCLabel {
-                text:   qsTr("Serial Port:")
+                text:   qsTr("ตั้งค่า port Serial:")
                 width:  _firstColumn
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -72,7 +72,7 @@ Item {
                             subEditConfig.portName = QGroundControl.linkManager.serialPorts[0]
                         var index = commPortCombo.find(subEditConfig.portDisplayName)
                         if (index === -1) {
-                            console.warn(qsTr("Serial Port not present"), subEditConfig.portName)
+                            console.warn(qsTr("ยังไม่ตั้งค่า Serial port"), subEditConfig.portName)
                         } else {
                             commPortCombo.currentIndex = index
                         }
@@ -85,7 +85,7 @@ Item {
         Row {
             spacing:    ScreenTools.defaultFontPixelWidth
             QGCLabel {
-                text:   qsTr("Baud Rate:")
+                text:   qsTr("ความเร็วสื่อสาร (baudrate):")
                 width:  _firstColumn
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -106,7 +106,7 @@ Item {
                     }
                     var index = baudCombo.find(baud)
                     if (index === -1) {
-                        console.warn(qsTr("Baud rate name not in combo box"), baud)
+                        console.warn(qsTr("baud rate นี้ไม่อยู่ในลิต"), baud)
                     } else {
                         baudCombo.currentIndex = index
                     }
@@ -121,7 +121,7 @@ Item {
         //-- Advanced Serial Settings
         QGCCheckBox {
             id:     showAdvanced
-            text:   qsTr("Show Advanced Serial Settings")
+            text:   qsTr("แสดงการตั้งค่า Serial ขั้นสูง")
         }
         Item {
             height: ScreenTools.defaultFontPixelHeight / 2
@@ -129,7 +129,7 @@ Item {
         }
         //-- Flow Control
         QGCCheckBox {
-            text:       qsTr("Enable Flow Control")
+            text:       qsTr("เปิดตัวคุมการไกล")
             checked:    subEditConfig ? subEditConfig.flowControl !== 0 : false
             visible:    showAdvanced.checked
             onCheckedChanged: {
@@ -143,14 +143,14 @@ Item {
             spacing:    ScreenTools.defaultFontPixelWidth
             visible:    showAdvanced.checked
             QGCLabel {
-                text:   qsTr("Parity:")
+                text:   qsTr("พาริตี้:")
                 width:  _firstColumn
                 anchors.verticalCenter: parent.verticalCenter
             }
             QGCComboBox {
                 id:             parityCombo
                 width:          _firstColumn
-                model:          [qsTr("None"), qsTr("Even"), qsTr("Odd")]
+                model:          [qsTr("ไม่มี"), qsTr("คู่"), qsTr("คี่")]
                 anchors.verticalCenter: parent.verticalCenter
                 onActivated: {
                     if (index != -1) {
@@ -180,7 +180,7 @@ Item {
             spacing:    ScreenTools.defaultFontPixelWidth
             visible:    showAdvanced.checked
             QGCLabel {
-                text:   "Data Bits:"
+                text:   "บิตข้อมูล:"
                 width:  _firstColumn
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -210,7 +210,7 @@ Item {
             spacing:    ScreenTools.defaultFontPixelWidth
             visible:    showAdvanced.checked
             QGCLabel {
-                text:   qsTr("Stop Bits:")
+                text:   qsTr("บิตหยุด:")
                 width:  _firstColumn
                 anchors.verticalCenter: parent.verticalCenter
             }

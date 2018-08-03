@@ -21,7 +21,7 @@ import QGroundControl.FactControls  1.0
 Rectangle {
     id:         root
     height:     ScreenTools.defaultFontPixelHeight * 7
-    radius:     ScreenTools.defaultFontPixelWidth * 0.5
+    radius:     ScreenTools.defaultFontPixelWidth * 2.5
     color:      qgcPal.window
     opacity:    0.80
     clip:       true
@@ -42,7 +42,7 @@ Rectangle {
         id:                     label
         anchors.top:            parent.bottom
         width:                  parent.height
-        text:                   qsTr("Terrain Altitude")
+        text:                   qsTr("ความสูงแต่ละจุด")
         horizontalAlignment:    Text.AlignHCenter
         rotation:               -90
         transformOrigin:        Item.TopLeft

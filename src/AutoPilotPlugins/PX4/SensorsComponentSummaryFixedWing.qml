@@ -27,23 +27,23 @@ FactPanel {
         anchors.fill:       parent
 
         VehicleSummaryRow {
-            labelText: qsTr("Compass:")
-            valueText: mag0IdFact ? (mag0IdFact.value  === 0 ? qsTr("Setup required") : qsTr("Ready")) : ""
+            labelText: qsTr("เข็มทิศ:")
+            valueText: mag0IdFact ? (mag0IdFact.value  === 0 ? qsTr("ต้องทำการตั้งค่า") : qsTr("ปกติ")) : ""
         }
 
         VehicleSummaryRow {
-            labelText: qsTr("Gyro:")
-            valueText: gyro0IdFact ? (gyro0IdFact.value === 0 ? qsTr("Setup required") : qsTr("Ready")) : ""
+            labelText: qsTr("ไจโร:")
+            valueText: gyro0IdFact ? (gyro0IdFact.value === 0 ? qsTr("ต้องทำการตั้งค่า") : qsTr("ปกติ")) : ""
         }
 
         VehicleSummaryRow {
-            labelText: qsTr("Accelerometer:")
-            valueText: accel0IdFact ? (accel0IdFact.value === 0 ? qsTr("Setup required") : qsTr("Ready")) : ""
+            labelText: qsTr("เซนเซอร์ความเร่ง:")
+            valueText: accel0IdFact ? (accel0IdFact.value === 0 ? qsTr("ต้องทำการตั้งค่า") : qsTr("ปกติ")) : ""
         }
 
         VehicleSummaryRow {
-            labelText: qsTr("Airspeed:")
-            valueText: dpressOffFact ? (dpressOffFact.value === 0 ? qsTr("Setup required") : qsTr("Ready")) : ""
+            labelText: qsTr("เซ็นเซอร์วัดลม:")
+            valueText: dpressOffFact ? (dpressOffFact.value === 0 ? qsTr("ต้องทำการตั้งค่า") : qsTr("ปกติ")) : ""
         }
     }
 }

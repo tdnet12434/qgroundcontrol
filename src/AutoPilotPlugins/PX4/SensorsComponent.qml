@@ -34,16 +34,16 @@ SetupPage {
             // Help text which is shown both in the status text area prior to pressing a cal button and in the
             // pre-calibration dialog.
 
-            readonly property string boardRotationText: qsTr("If the orientation is in the direction of flight, select ROTATION_NONE.")
-            readonly property string compassRotationText: qsTr("If the orientation is in the direction of flight, select ROTATION_NONE.")
+            readonly property string boardRotationText: qsTr("ถ้าบอร์ดหันหน้าทางเดียวกับเครื่องบิน เลือก ROTATION_NONE.")
+            readonly property string compassRotationText: qsTr("ถ้าเข็มทิศหันทางเดียวกับเครื่องบิน เลือก ROTATION_NONE.")
 
-            readonly property string compassHelp:   qsTr("For Compass calibration you will need to rotate your vehicle through a number of positions. Click Ok to start calibration.")
-            readonly property string gyroHelp:      qsTr("For Gyroscope calibration you will need to place your vehicle on a surface and leave it still. Click Ok to start calibration.")
-            readonly property string accelHelp:     qsTr("For Accelerometer calibration you will need to place your vehicle on all six sides on a perfectly level surface and hold it still in each orientation for a few seconds. Click Ok to start calibration.")
-            readonly property string levelHelp:     qsTr("To level the horizon you need to place the vehicle in its level flight position and press OK.")
-            readonly property string airspeedHelp:  qsTr("For Airspeed calibration you will need to keep your airspeed sensor out of any wind and then blow across the sensor. Do not touch the sensor or obstruct any holes during the calibration.")
+            readonly property string compassHelp:   qsTr("สำหรับเข็มทิศ คุณต้องหมุนลำเครื่องบินตามรูปทุกรูป กด Ok เพื่อเริ่มปรับเทียบ")
+            readonly property string gyroHelp:      qsTr("สำหรับไจโร คุณต้องวางลำเครื่องบินไว้เฉยๆบนพื้นผิวได้ระดับ วางนิ่งจนกระบวนการเสร็จสิ้น กด Ok เพื่อเริ่มปรับเทียบ")
+            readonly property string accelHelp:     qsTr("สำหรับเซนเซอร์วัดความเร่ง คุณต้องวางลำเครื่องบินตามทิศทางในรูป ให้เลือกพื้นผิวที่ได้ระดับตามรูปที่สุดเท่าที่จะมากได้ วางนิ่งในทิศทางนั้นสักพักจนขึ้นสถานะเสร็จสิ้น จึงเปลี่ยนท่าทาง กด Ok เพื่อเริ่มปรับเทียบ")
+            readonly property string levelHelp:     qsTr("ในการปรับเทียบแนวระดับ คุณต้องวางเครื่องบินในระดับเดียวกับขณะบิน กด Ok เพื่อเริ่มปรับเทียบ")
+            readonly property string airspeedHelp:  qsTr("สำหรับเซนเซอร์วัดลม คุณต้องวางเซนเซอร์ในที่ๆไม่มีลม (ห้ามปิดปากเซนเซอร์) จนระบบบอกว่าให้เป่าลมจึงเป่าลมเข้าไปยังเซนเซอร์ กด Ok เพื่อเริ่มปรับเทียบ")
 
-            readonly property string statusTextAreaDefaultText: qsTr("Start the individual calibration steps by clicking one of the buttons to the left.")
+            readonly property string statusTextAreaDefaultText: qsTr("เริ่มการปรับเทียบเซนเซอร์โดยเลือกจากเซนเซอร์ที่ต้องการปรับเทียบในเมนูด้านซ้าย")
 
             // Used to pass what type of calibration is being performed to the preCalibrationDialog
             property string preCalibrationDialogType

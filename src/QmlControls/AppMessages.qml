@@ -118,7 +118,7 @@ QGCView {
                 folder:         QGroundControl.settingsManager.appSettings.logSavePath
                 nameFilters:    [qsTr("Log files (*.txt)"), qsTr("All Files (*)")]
                 selectExisting: false
-                title:          qsTr("Select log save file")
+                title:          qsTr("เลือก Log file")
                 qgcView:        _qgcView
                 onAcceptedForSave: {
                     debugMessageModel.writeMessages(file);
@@ -137,7 +137,7 @@ QGCView {
                 anchors.bottom:  parent.bottom
                 anchors.left:    parent.left
                 onClicked:       writeDialog.openForSave()
-                text:            qsTr("Save App Log")
+                text:            qsTr("เก็บ Log ของApp")
             }
 
             BusyIndicator {
@@ -153,7 +153,7 @@ QGCView {
                 anchors.right:          filterButton.left
                 anchors.rightMargin:    ScreenTools.defaultFontPixelWidth
                 anchors.bottom:         parent.bottom
-                text:                   qsTr("Show Latest")
+                text:                   qsTr("แสดงล่าสุด")
                 checkable:              true
                 checked:                true
 
@@ -168,7 +168,7 @@ QGCView {
                 id:             filterButton
                 anchors.bottom: parent.bottom
                 anchors.right:  parent.right
-                text:           qsTr("Set logging")
+                text:           qsTr("ตั้งให้มีการบันทึก")
                 onClicked:      showDialog(filtersDialogComponent, qsTr("Turn on logging categories"), qgcView.showDialogDefaultWidth, StandardButton.Close)
             }
         }

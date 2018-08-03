@@ -1,42 +1,42 @@
 [
 {
     "name":             "voltage",
-    "shortDescription": "Voltage",
+    "shortDescription": "แรงดันแบต",
     "type":             "double",
     "decimalPlaces":    2,
     "units":            "v"
 },
 {
     "name":             "percentRemaining",
-    "shortDescription": "Percent",
+    "shortDescription": "แบตเหลือ(เปอร์เซ็น)",
     "type":             "int32",
     "decimalPlaces":    0,
     "units":            "%"
 },
 {
     "name":             "mahConsumed",
-    "shortDescription": "Consumed",
+    "shortDescription": "การสิ้นเปลือง",
     "type":             "int32",
      "decimalPlaces":    0,
      "units":            "mAh"
 },
 {
     "name":             "current",
-    "shortDescription": "Current",
+    "shortDescription": "กระแสแบต",
     "type":             "float",
     "decimalPlaces":    2,
     "units":            "A"
 },
 {
     "name":             "temperature",
-    "shortDescription": "Temperature",
+    "shortDescription": "อุณหภูมิกล่องควบคุม",
     "type":             "int32",
     "decimalPlaces":    2,
     "units":            "C"
 },
 {
     "name":             "cellCount",
-    "shortDescription": "Cell Count",
+    "shortDescription": "จำนวนเซลแบต",
     "type":             "int32",
     "decimalPlaces":    0
 }

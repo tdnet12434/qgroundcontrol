@@ -1,77 +1,77 @@
 [
 {
     "name":             "roll",
-    "shortDescription": "Roll",
+    "shortDescription": "โรล",
     "type":             "double",
     "decimalPlaces":    1,
     "units":            "deg"
 },
 {
     "name":             "pitch",
-    "shortDescription": "Pitch",
+    "shortDescription": "พิทต์",
     "type":             "double",
     "decimalPlaces":    1,
     "units":            "deg"
 },
 {
     "name":             "heading",
-    "shortDescription": "Heading",
+    "shortDescription": "ทิศทาง",
     "type":             "double",
     "decimalPlaces":    0,
     "units":            "deg"
 },
 {
     "name":             "groundSpeed",
-    "shortDescription": "Ground Speed",
+    "shortDescription": "ความเร็วเทียบพื้น",
     "type":             "double",
     "decimalPlaces":    1,
     "units":            "m/s"
 },
 {
     "name":             "airSpeed",
-    "shortDescription": "Air Speed",
+    "shortDescription": "ความเร็วเทียบอากาศ",
     "type":             "double",
     "decimalPlaces":    1,
     "units":            "m/s"
 },
 {
     "name":             "climbRate",
-    "shortDescription": "Climb Rate",
+    "shortDescription": "การไต่ระดับ",
     "type":             "double",
     "decimalPlaces":    1,
     "units":            "m/s"
 },
 {
     "name":             "altitudeRelative",
-    "shortDescription": "Altitude-rel",
+    "shortDescription": "ความสูงสัมพัทธ์",
     "type":             "double",
     "decimalPlaces":    1,
     "units":            "m"
 },
 {
     "name":             "altitudeAMSL",
-    "shortDescription": "Altitude",
+    "shortDescription": "ความสูงเหนือระดับน้ำทะเล",
     "type":             "double",
     "decimalPlaces":    1,
     "units":            "m"
 },
 {
     "name":             "flightDistance",
-    "shortDescription": "Flight Distance",
+    "shortDescription": "ระยะทางการบิน",
     "type":             "double",
     "decimalPlaces":    1,
     "units":            "m"
 },
 {
     "name":             "distanceToHome",
-    "shortDescription": "Distance to Home",
+    "shortDescription": "ระยะทางจากจุดบินขึ้น",
     "type":             "double",
     "decimalPlaces":    1,
     "units":            "m"
 },
 {
     "name":             "flightTime",
-    "shortDescription": "Flight Time",
+    "shortDescription": "ระยะเวลาบิน",
     "type":             "elapsedSeconds",
     "decimalPlaces":    1
 }

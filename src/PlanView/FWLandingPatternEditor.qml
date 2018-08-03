@@ -43,7 +43,7 @@ Rectangle {
         visible:            missionItem.landingCoordSet
 
         SectionHeader {
-            text: qsTr("Loiter point")
+            text: qsTr("จุดบินวนก่อนลงจอด")
         }
 
         Item { width: 1; height: _spacer }
@@ -59,7 +59,7 @@ Rectangle {
         QGCCheckBox {
             id:             loiterAltRelative
             anchors.right:  parent.right
-            text:           qsTr("Altitude relative to home")
+            text:           qsTr("ความสูงเทียบกับจุดขึ้น")
             checked:        missionItem.loiterAltitudeRelative
             onClicked:      missionItem.loiterAltitudeRelative = checked
         }
@@ -68,12 +68,12 @@ Rectangle {
 
         QGCCheckBox {
             anchors.left:   loiterAltRelative.left
-            text:           qsTr("Loiter clockwise")
+            text:           qsTr("วนตามเข็ม")
             checked:        missionItem.loiterClockwise
             onClicked:      missionItem.loiterClockwise = checked
         }
 
-        SectionHeader { text: qsTr("Landing point") }
+        SectionHeader { text: qsTr("จุดลงจอด") }
 
         Item { width: 1; height: _spacer }
 
@@ -151,7 +151,7 @@ Rectangle {
 
         QGCCheckBox {
             anchors.right:  parent.right
-            text:           qsTr("Altitude relative to home")
+            text:           qsTr("ความสูงเทียบกับจุดขึ้น")
             checked:        missionItem.landingAltitudeRelative
             onClicked:      missionItem.landingAltitudeRelative = checked
         }
@@ -177,7 +177,7 @@ Rectangle {
             anchors.left:   parent.left
             anchors.right:  parent.right
             wrapMode:       Text.WordWrap
-            text:           qsTr("Click in map to set landing point.")
+            text:           qsTr("คลิ๊กบนแผนที่เพื่อวางจุดลงจอด")
         }
     }
 }

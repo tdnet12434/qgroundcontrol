@@ -67,7 +67,7 @@ Rectangle {
         anchors.verticalCenter: commandPicker.verticalCenter
         anchors.leftMargin:     _margin
         anchors.left:           parent.left
-        text:                   missionItem.homePosition ? "H" : missionItem.sequenceNumber
+        text:                   missionItem.homePosition ? "จุดขึ้น" : missionItem.sequenceNumber
         color:                  _outerTextColor
     }
 
@@ -97,13 +97,13 @@ Rectangle {
             id: hamburgerMenu
 
             MenuItem {
-                text:           qsTr("Insert waypoint")
+                text:           qsTr("เพิ่มเวย์พอยต์")
                 onTriggered:    insertWaypoint()
             }
 
             Menu {
                 id:         patternMenu
-                title:      qsTr("Insert pattern")
+                title:      qsTr("เพิ่มรูปแบบการบิน")
                 visible:    !_singleComplexItem
 
                 Instantiator {
@@ -120,18 +120,18 @@ Rectangle {
             }
 
             MenuItem {
-                text:           qsTr("Insert ") + _missionController.complexMissionItemNames[0]
+                text:           qsTr("เพิ่ม ") + _missionController.complexMissionItemNames[0]
                 visible:        _singleComplexItem
                 onTriggered:    insertComplexItem(_missionController.complexMissionItemNames[0])
             }
 
             MenuItem {
-                text:           qsTr("Delete")
+                text:           qsTr("ลบ")
                 onTriggered:    remove()
             }
 
             MenuItem {
-                text:           qsTr("Change command...")
+                text:           qsTr("เปลี่ยนคำสั่ง...")
                 onTriggered:    commandPicker.clicked()
                 visible:        !_waypointsOnlyMode
             }
@@ -141,7 +141,7 @@ Rectangle {
             }
 
             MenuItem {
-                text:       qsTr("Show all values")
+                text:       qsTr("โชว์ทุกพารามิเตอร์")
                 checkable:  true
                 checked:    missionItem.isSimpleItem ? missionItem.rawEdit : false
                 visible:    missionItem.isSimpleItem && !_waypointsOnlyMode
@@ -151,7 +151,7 @@ Rectangle {
                         if (missionItem.friendlyEditAllowed) {
                             missionItem.rawEdit = false
                         } else {
-                            qgcView.showMessage(qsTr("Mission Edit"), qsTr("You have made changes to the mission item which cannot be shown in Simple Mode"), StandardButton.Ok)
+                            qgcView.showMessage(qsTr("แก้ไขภารกิจ"), qsTr("คุณเปลี่ยนการตั้งค่าบางอย่างที่อาจไม่แสดงในโหมดอย่างง่าย"), StandardButton.Ok)
                         }
                     } else {
                         missionItem.rawEdit = true
@@ -180,7 +180,7 @@ Rectangle {
             }
         }
 
-        onClicked: qgcView.showDialog(commandDialog, qsTr("Select Mission Command"), qgcView.showDialogDefaultWidth, StandardButton.Cancel)
+        onClicked: qgcView.showDialog(commandDialog, qsTr("เลือกคำสั่งภารกิจ"), qgcView.showDialogDefaultWidth, StandardButton.Cancel)
     }
 
     QGCLabel {

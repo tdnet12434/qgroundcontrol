@@ -48,7 +48,7 @@ Item {
             QGCLabel {
                 anchors.left:   parent.left
                 anchors.right:  parent.right
-                text:           qsTr("The following commands will be applied to all vehicles")
+                text:           qsTr("คำสั่งเหล่านี้จะส่งไปยังเครื่องบินทุกลำ")
                 color:          _textColor
                 wrapMode:       Text.WordWrap
                 font.pointSize: ScreenTools.smallFontPointSize
@@ -58,12 +58,12 @@ Item {
                 spacing:            _margin
 
                 QGCButton {
-                    text:       "Pause"
+                    text:       "หยุด"
                     onClicked:  guidedActionsController.confirmAction(guidedActionsController.actionMVPause)
                 }
 
                 QGCButton {
-                    text:       "Start Mision"
+                    text:       "เริ่มภารกิจ"
                     onClicked:  guidedActionsController.confirmAction(guidedActionsController.actionMVStartMission)
                 }
             }
@@ -145,31 +145,31 @@ Item {
                     spacing: ScreenTools.defaultFontPixelWidth
 
                     QGCButton {
-                        text:       "Arm"
+                        text:       "เปิดใบพัด"
                         visible:    !_vehicle.armed
                         onClicked:  _vehicle.armed = true
                     }
 
                     QGCButton {
-                        text:       "Start Mission"
+                        text:       "เริ่มภารกิจ"
                         visible:    _vehicle.armed && _vehicle.flightMode != _vehicle.missionFlightMode
                         onClicked:  _vehicle.startMission()
                     }
 
                     QGCButton {
-                        text:       "Pause"
+                        text:       "หยุด"
                         visible:    _vehicle.armed && _vehicle.pauseVehicleSupported
                         onClicked:  _vehicle.pauseVehicle()
                     }
 
                     QGCButton {
-                        text:       "RTL"
+                        text:       "กลับบ้าน"
                         visible:    _vehicle.armed && _vehicle.flightMode != _vehicle.rtlFlightMode
                         onClicked:  _vehicle.flightMode = _vehicle.rtlFlightMode
                     }
 
                     QGCButton {
-                        text:       "Take control"
+                        text:       "เข้าควบคุม"
                         visible:    _vehicle.armed && _vehicle.flightMode != _vehicle.takeControlFlightMode
                         onClicked:  _vehicle.flightMode = _vehicle.takeControlFlightMode
                     }

@@ -47,7 +47,7 @@ Item {
 
         MessageDialog {
             id:                 advancedModeConfirmation
-            title:              qsTr("Advanced Mode")
+            title:              qsTr("โหมดขั้นสูง")
             text:               QGroundControl.corePlugin.showAdvancedUIMessage
             standardButtons:    StandardButton.Yes | StandardButton.No
 
@@ -61,7 +61,7 @@ Item {
     QGCLabel {
         id:                     waitForVehicle
         anchors.verticalCenter: parent.verticalCenter
-        text:                   qsTr("Waiting For T-Bird and T-Net")
+        text:                   qsTr("รอ T-Bird และ T-Net สำหรับการเชื่อมต่อ")
         font.pointSize:         ScreenTools.mediumFontPointSize
         font.family:            ScreenTools.demiboldFontFamily
         color:                  qgcPal.colorRed
@@ -127,7 +127,7 @@ Item {
         QGCButton {
             id:                     disconnectButton
             anchors.verticalCenter: parent.verticalCenter
-            text:                   qsTr("Disconnect")
+            text:                   qsTr("ตัดการเชื่อมต่อ")
             primary:                true
             onClicked:              _activeVehicle.disconnectInactiveVehicle()
         }
@@ -135,7 +135,7 @@ Item {
         QGCLabel {
             id:                     connectionLost
             anchors.verticalCenter: parent.verticalCenter
-            text:                   qsTr("COMMUNICATION LOST")
+            text:                   qsTr("การสื่อสารขาดหาย")
             font.pointSize:         ScreenTools.largeFontPointSize
             font.family:            ScreenTools.demiboldFontFamily
             color:                  qgcPal.colorRed

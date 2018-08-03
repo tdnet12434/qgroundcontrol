@@ -170,6 +170,16 @@
         <file alias="APM/BrandImageSub">src/FirmwarePlugin/APM/APMBrandImageSub.png</file>
         <file alias="PX4/BrandImage">src/FirmwarePlugin/PX4/PX4BrandImage.png</file>
         <file alias="subVehicleArrowOpaque.png">src/FlightMap/Images/sub.png</file>
+        <file>src/FlightMap/Images/home3.svg</file>
+        <file>src/FlightMap/Images/home2.svg</file>
+        <file>src/FlightMap/Images/CompassPointer.svg</file>
+        <file>src/FlightMap/Images/attitudePointer-original.svg</file>
+        <file>src/FlightMap/Images/open.svg</file>
+        <file>src/FlightMap/Images/upLoad.svg</file>
+        <file>src/FlightMap/Images/takeoff.svg</file>
+        <file>src/FlightMap/Images/save.svg</file>
+        <file>src/FlightMap/Images/remove.svg</file>
+        <file>src/FlightMap/Images/download.svg</file>
     </qresource>
     <qresource prefix="/res">
         <file alias="action.svg">resources/action.svg</file>

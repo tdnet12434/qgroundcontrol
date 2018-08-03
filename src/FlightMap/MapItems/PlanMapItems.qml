@@ -70,7 +70,7 @@ Item {
 
         MapPolyline {
             line.width: 3
-            line.color: "#be781c"                           // Hack, can't get palette to work in here
+            line.color: "cyan"                           // Hack, can't get palette to work in here
             z:          QGroundControl.zOrderWaypointLines
             path:       object ? [ object.coordinate1, object.coordinate2] : undefined
 

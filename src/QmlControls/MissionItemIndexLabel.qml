@@ -23,6 +23,8 @@ Canvas {
     property bool   specifiesCoordinate:    true
     property real   gimbalYaw
     property real   vehicleYaw
+    property real   missionAltRel:          0
+    property real   missionSpd:             0
     property bool   showGimbalYaw:          false
 
     property real   _width:             showGimbalYaw ? Math.max(_gimbalYawWidth, labelControl.visible ? labelControl.width : indicator.width) : (labelControl.visible ? labelControl.width : indicator.width)
@@ -92,16 +94,48 @@ Canvas {
         visible:                labelControl.visible
     }
 
+    QGCLabel {
+        id:                     label_Alt_Speed
+        anchors.topMargin:      -_labelMargin
+        anchors.bottomMargin:   -_labelMargin
+        anchors.leftMargin:     _labelMargin*2
+        anchors.left:           indicator.right
+        anchors.top:            indicator.top
+        anchors.bottom:         indicator.bottom
+        color:                  "white"
+        text:                   "     Type "+missionItem.commandName+"\n     Alt "+  missionItem.coordinate.altitude + "\n     Speed " + missionItem.specifiedFlightSpeed
+        //text:                   "Alt "+ _altitude.toString()
+//        text:                   QGroundControl.settingsManager.appSettings.altitude
+        //text:                   missionItem.speedSection.flightSpeed
+        //_index
+        verticalAlignment:      Text.AlignVCenter
+        visible:                false
+    }
+
     Rectangle {
         id:                             indicator
         anchors.horizontalCenter:       parent.left
         anchors.verticalCenter:         parent.top
         anchors.horizontalCenterOffset: anchorPointX
         anchors.verticalCenterOffset:   anchorPointY
-        width:                          _indicatorRadius * 2
+        //width:                          _indicatorRadius * 2
+        width:                          _indicatorRadius * 2.5
         height:                         width
-        color:                          root.color
-        radius:                         _indicatorRadius
+//        color:                          root.color
+        color:                          "black"
+        border.color:                   "#00ffff"
+        border.width:                   2
+        //radius:                         _indicatorRadius
+        radius:                         _indicatorRadius * 2.5
+        visible:                        _index !== 'H' || _label !== '1'
+
+        QGCMouseArea {
+            anchors.fill: parent
+            hoverEnabled: true
+            onEntered:     label_Alt_Speed.visible = true
+//            onEntered:      console.log("mouse enter")
+            onExited:      label_Alt_Speed.visible = false
+        }
 
         QGCLabel {
             anchors.fill:           parent

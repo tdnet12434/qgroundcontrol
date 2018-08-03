@@ -32,9 +32,9 @@ Rectangle {
     readonly property real      _horizontalMargin:  _defaultTextWidth / 2
     readonly property real      _verticalMargin:    _defaultTextHeight / 2
     readonly property real      _buttonWidth:       _defaultTextWidth * 18
-    readonly property string    _armedVehicleText:  qsTr("This operation cannot be performed while the vehicle is armed.")
+    readonly property string    _armedVehicleText:  qsTr("ในขณะปฏิบัติการ (Armed) ไม่สามารถใช้การตั้งค่านี้ได้")
 
-    property string _messagePanelText:              qsTr("missing message panel text")
+    property string _messagePanelText:              qsTr("ไม่มีข้อความนี้")
     property bool   _fullParameterVehicleAvailable: QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable && !QGroundControl.multiVehicleManager.activeVehicle.parameterManager.missingParameters
     property var    _corePlugin:                    QGroundControl.corePlugin
 
@@ -81,7 +81,7 @@ Rectangle {
         var prereq = autopilotPlugin.prerequisiteSetup(vehicleComponent)
         if (prereq !== "") {
             //-- TODO: This cannot be translated when built this way.
-            _messagePanelText = prereq + " setup must be completed prior to " + vehicleComponent.name + " setup."
+            _messagePanelText = prereq + " ต้องตั้งค่าก่อนบิน " + vehicleComponent.name
             panelLoader.setSourceComponent(messagePanelComponent)
         } else {
             panelLoader.setSource(vehicleComponent.setupSource, vehicleComponent)
@@ -127,8 +127,8 @@ Rectangle {
                 horizontalAlignment:    Text.AlignHCenter
                 wrapMode:               Text.WordWrap
                 font.pointSize:         ScreenTools.mediumFontPointSize
-                text:                   qsTr("%1 does not currently support setup of your vehicle type. ").arg(QGroundControl.appName) +
-                                        "If your vehicle is already configured you can still Fly."
+                text:                   qsTr("%1 ยังไม่สนับสนุนในแพรตฟอร์มนี้").arg(QGroundControl.appName) +
+                                        "ถ้าตั้งค่าไว้แล้วคุณยังสามารถบินได้ปกติ"
 
                 onLinkActivated: Qt.openUrlExternally(link)
             }
@@ -148,8 +148,8 @@ Rectangle {
                 horizontalAlignment:    Text.AlignHCenter
                 wrapMode:               Text.WordWrap
                 font.pointSize:         ScreenTools.largeFontPointSize
-                text:                   qsTr("Vehicle settings and info will display after connecting your vehicle.") +
-                                        (ScreenTools.isMobile ? "" : " Click Firmware on the left to upgrade your vehicle.")
+                text:                   qsTr("การตั้งค่าจะแสดงหลังจากเชื่อมต่อเครื่องบิน") +
+                                        (ScreenTools.isMobile ? "" : " เลือกรุ่นเฟิร์มแวร์ทางซ้ายเพื่ออัพเกรดเครื่องบิน")
 
                 onLinkActivated: Qt.openUrlExternally(link)
             }
@@ -169,8 +169,8 @@ Rectangle {
                 horizontalAlignment:    Text.AlignHCenter
                 wrapMode:               Text.WordWrap
                 font.pointSize:         ScreenTools.mediumFontPointSize
-                text:                   qsTr("You are currently connected to a vehicle but it did not return the full parameter list. ") +
-                                        qsTr("As a result, the full set of vehicle setup options are not available.")
+                text:                   qsTr("คุณได้เชื่อมต่อกับเครื่องบินแล้ว แต่บางพารามิเตอร์ไม่สามารถรับได้ครบถ้วน") +
+                                        qsTr("เพื่อป้องกันการผิดพลาด เราได้ปิดฟังก์ชันการติดตั้งบางส่วนไปจนกว่าพารามิเตอร์จะมาครบ")
 
                 onLinkActivated: Qt.openUrlExternally(link)
             }
@@ -212,7 +212,7 @@ Rectangle {
             QGCLabel {
                 anchors.left:           parent.left
                 anchors.right:          parent.right
-                text:                   qsTr("Vehicle Setup")
+                text:                   qsTr("การตั้งค่าเครื่องบิน")
                 wrapMode:               Text.WordWrap
                 horizontalAlignment:    Text.AlignHCenter
                 visible:                !ScreenTools.isShortScreen
@@ -238,7 +238,7 @@ Rectangle {
                 setupIndicator:     false
                 checked:            true
                 exclusiveGroup:     setupButtonGroup
-                text:               qsTr("Summary")
+                text:               qsTr("สถานะเครื่องบิน")
                 Layout.fillWidth:   true
 
                 onClicked: showSummaryPanel()
@@ -250,7 +250,7 @@ Rectangle {
                 setupIndicator:     false
                 exclusiveGroup:     setupButtonGroup
                 visible:            !ScreenTools.isMobile && _corePlugin.options.showFirmwareUpgrade
-                text:               qsTr("Firmware")
+                text:               qsTr("เฟริมแวร์")
                 Layout.fillWidth:   true
 
                 onClicked: showFirmwarePanel()
@@ -273,7 +273,7 @@ Rectangle {
                 setupComplete:      joystickManager.activeJoystick ? joystickManager.activeJoystick.calibrated : false
                 exclusiveGroup:     setupButtonGroup
                 visible:            _fullParameterVehicleAvailable && joystickManager.joysticks.length != 0
-                text:               qsTr("Joystick")
+                text:               qsTr("จอยสติ๊ก")
                 Layout.fillWidth:   true
 
                 onClicked: showJoystickPanel()
@@ -300,7 +300,7 @@ Rectangle {
                 setupIndicator:     false
                 exclusiveGroup:     setupButtonGroup
                 visible:            QGroundControl.multiVehicleManager && QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable && _corePlugin.showAdvancedUI
-                text:               qsTr("Parameters")
+                text:               qsTr("พารามิเตอร์")
                 Layout.fillWidth:   true
 
                 onClicked: showParametersPanel()

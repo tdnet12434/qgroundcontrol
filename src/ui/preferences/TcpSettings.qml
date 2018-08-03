@@ -35,7 +35,7 @@ Item {
         spacing:    ScreenTools.defaultFontPixelHeight / 2
         QGCLabel {
             id:     tcpLabel
-            text:   qsTr("TCP Link Settings")
+            text:   qsTr("ตั้งค่าการเชื่อมต่อ TCP ")
         }
         Rectangle {
             height: 1
@@ -49,7 +49,7 @@ Item {
         Row {
             spacing:    ScreenTools.defaultFontPixelWidth
             QGCLabel {
-                text:   qsTr("Host Address:")
+                text:   qsTr("ที่อยู่โฮส:")
                 width:  _firstColumn
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -63,7 +63,7 @@ Item {
         Row {
             spacing:    ScreenTools.defaultFontPixelWidth
             QGCLabel {
-                text:   qsTr("TCP Port:")
+                text:   qsTr("พอร์ต TCP:")
                 width:  _firstColumn
                 anchors.verticalCenter: parent.verticalCenter
             }

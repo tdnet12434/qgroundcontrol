@@ -41,7 +41,7 @@ SetupPage {
             }
 
             QGCLabel {
-                text: qsTr("Radio Settings")
+                text: qsTr("ตั้งค่าวิทยุ")
                 font.family: ScreenTools.demiboldFontFamily
             }
 
@@ -59,7 +59,7 @@ SetupPage {
                     columnSpacing:      ScreenTools.defaultFontPixelWidth
 
                     QGCLabel {
-                        text:               qsTr("Channel")
+                        text:               qsTr("ช่อง")
                     }
 
                     QGCTextField {
@@ -79,12 +79,12 @@ SetupPage {
                         Layout.fillWidth:   true
                         font.pointSize:     ScreenTools.smallFontPointSize
                         wrapMode:           Text.WordWrap
-                        text:               "Channel can be between 0 and 125"
+                        text:               "ช่องต้องอยู่ระหว่าง 0 ถึง 125"
                     }
 
                     QGCLabel {
                         id:                 addressLabel
-                        text:               qsTr("Address")
+                        text:               qsTr("ที่อยู่")
                     }
 
                     QGCTextField {
@@ -110,7 +110,7 @@ SetupPage {
 
                     QGCLabel {
                         id:                 rateLabel
-                        text:               qsTr("Data Rate")
+                        text:               qsTr("ความถี่ข้อมูล")
                     }
 
                     QGCComboBox {
@@ -124,7 +124,7 @@ SetupPage {
                     }
 
                     QGCButton {
-                        text:                           "Restore Defaults"
+                        text:                           "คืนค่าโรงงาน"
                         width:                          textEditWidth
                         onClicked: {
                             controller.resetDefaults()

@@ -40,7 +40,7 @@ QGCView {
         id:         controller;
         factPanel:  panel
         onShowErrorMessage: {
-            showMessage(qsTr("Parameter Load Errors"), errorMsg, StandardButton.Ok)
+            showMessage(qsTr("ไม่สามารถโหลดพารามิเตอร์ได้ Error"), errorMsg, StandardButton.Ok)
         }
     }
 
@@ -69,7 +69,7 @@ QGCView {
 
             QGCLabel {
                 anchors.baseline:   clearButton.baseline
-                text:               qsTr("Search:")
+                text:               qsTr("ค้นหา:")
             }
 
             QGCTextField {
@@ -81,7 +81,7 @@ QGCView {
 
             QGCButton {
                 id:         clearButton
-                text:       qsTr("Clear")
+                text:       qsTr("ล้าง")
                 onClicked: {
                     if(ScreenTools.isMobile) {
                         Qt.inputMethod.hide();
@@ -95,26 +95,26 @@ QGCView {
             anchors.top:    header.top
             anchors.bottom: header.bottom
             anchors.right:  parent.right
-            text:           qsTr("Tools")
+            text:           qsTr("เครื่องมือ")
             visible:        !_searchFilter
 
             menu: Menu {
                 MenuItem {
-                    text:           qsTr("Refresh")
+                    text:           qsTr("ดึงค่าใหม่")
                     onTriggered:	controller.refresh()
                 }
                 MenuItem {
-                    text:           qsTr("Reset all to defaults")
-                    onTriggered:    showDialog(resetToDefaultConfirmComponent, qsTr("Reset All"), qgcView.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Reset)
+                    text:           qsTr("รีเซ็ตค่าโรงงาน")
+                    onTriggered:    showDialog(resetToDefaultConfirmComponent, qsTr("รีเซ็ตทั้งหมด"), qgcView.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Reset)
                 }
                 MenuSeparator { }
                 MenuItem {
-                    text:           qsTr("Load from file...")
+                    text:           qsTr("เลือกจากไฟล์...")
                     onTriggered: {
                         var appSettings = QGroundControl.settingsManager.appSettings
 
                         fileDialog.qgcView =        qgcView
-                        fileDialog.title =          qsTr("Select Parameter File")
+                        fileDialog.title =          qsTr("เลือกไฟล์เก็บพารามิเตอร์")
                         fileDialog.selectExisting = true
                         fileDialog.folder =         appSettings.parameterSavePath
                         fileDialog.fileExtension =  appSettings.parameterFileExtension
@@ -123,12 +123,12 @@ QGCView {
                     }
                 }
                 MenuItem {
-                    text:           qsTr("Save to file...")
+                    text:           qsTr("บันทึกไปยัง...")
                     onTriggered: {
                         var appSettings = QGroundControl.settingsManager.appSettings
 
                         fileDialog.qgcView =        qgcView
-                        fileDialog.title =          qsTr("Save Parameters")
+                        fileDialog.title =          qsTr("บันทึกพารามิเตอร์")
                         fileDialog.selectExisting = false
                         fileDialog.folder =         appSettings.parameterSavePath
                         fileDialog.fileExtension =  appSettings.parameterFileExtension
@@ -138,14 +138,14 @@ QGCView {
                 }
                 MenuSeparator { visible: _showRCToParam }
                 MenuItem {
-                    text:           qsTr("Clear RC to Param")
+                    text:           qsTr("ลบการตั้งค่าRCปรับพารามิเตอร์")
                     onTriggered:	controller.clearRCToParam()
                     visible:        _showRCToParam
                 }
                 MenuSeparator { }
                 MenuItem {
-                    text:           qsTr("Reboot Vehicle")
-                    onTriggered:    showDialog(rebootVehicleConfirmComponent, qsTr("Reboot Vehicle"), qgcView.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Ok)
+                    text:           qsTr("รีบูทเครื่องบินใหม่")
+                    onTriggered:    showDialog(rebootVehicleConfirmComponent, qsTr("รีบูทเครื่องบิน"), qgcView.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Ok)
                 }
             }
         }
@@ -177,7 +177,7 @@ QGCView {
                         readonly property int componentId: modelData
 
                         QGCLabel {
-                            text: qsTr("Component #: %1").arg(componentId.toString())
+                            text: qsTr("ส่วนประกอบ #: %1").arg(componentId.toString())
                             font.family: ScreenTools.demiboldFontFamily
                             anchors.horizontalCenter: parent.horizontalCenter
                         }
@@ -273,7 +273,7 @@ QGCView {
                     acceptedButtons:    Qt.LeftButton
                     onClicked: {
                         _editorDialogFact = factRow.modelFact
-                        showDialog(editorDialogComponent, qsTr("Parameter Editor"), qgcView.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Save)
+                        showDialog(editorDialogComponent, qsTr("ตัวตั้งค่าพารามิเตอร์"), qgcView.showDialogDefaultWidth, StandardButton.Cancel | StandardButton.Save)
                     }
                 }
             }
@@ -315,7 +315,7 @@ QGCView {
             QGCLabel {
                 width:              parent.width
                 wrapMode:           Text.WordWrap
-                text:               qsTr("Select Reset to reset all parameters to their defaults.")
+                text:               qsTr("เลือก รีเซ็ต เพื่อปรับค่าไปยังค่าเริ่มต้น")
             }
         }
     }
@@ -332,7 +332,7 @@ QGCView {
             QGCLabel {
                 width:              parent.width
                 wrapMode:           Text.WordWrap
-                text:               qsTr("Select Ok to reboot vehicle.")
+                text:               qsTr("กด OK เพื่อเริ่มระบบเครื่องบินใหม่")
             }
         }
     }

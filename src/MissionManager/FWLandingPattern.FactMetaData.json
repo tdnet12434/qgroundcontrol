@@ -1,7 +1,7 @@
 [
 {
     "name":             "Landing dist",
-    "shortDescription": "Distance between landing and loiter points.",
+    "shortDescription": "ระยะระหว่างจุดบนวนและจุดลงจอด",
     "type":             "double",
     "units":            "m",
     "min":              10,
@@ -10,7 +10,7 @@
 },
 {
     "name":             "Landing heading",
-    "shortDescription": "Heading from loiter point to land point.",
+    "shortDescription": "ทิศทางการเข้าลงจอด",
     "type":             "double",
     "units":            "deg",
     "min":              0.0,
@@ -20,7 +20,7 @@
 },
 {
     "name":             "Loiter altitude",
-    "shortDescription": "Aircraft will proceed to the loiter point and loiter until it reaches this altitude. Once altitude is reached the aircraft will proceed to land.",
+    "shortDescription": "เมื่อเครื่องบินเข้าสู่จุดบินวน จะร่อนระดับจนได้ระดับความสูงนี้ จึงจะทำการเข้าจุดลงจอด",
     "type":             "double",
     "units":            "m",
     "decimalPlaces":    1,
@@ -28,7 +28,7 @@
 },
 {
     "name":             "Loiter radius",
-    "shortDescription": "Loiter radius.",
+    "shortDescription": "รัศมีการบินวน",
     "type":             "double",
     "decimalPlaces":    1,
     "min":              1,
@@ -37,7 +37,7 @@
 },
 {
     "name":             "Landing altitude",
-    "shortDescription": "Altitude for landing point.",
+    "shortDescription": "ความสูงสำหรับการลงจอด",
     "type":             "double",
     "units":            "m",
     "decimalPlaces":    1,
@@ -45,7 +45,7 @@
 },
 {
     "name":             "Descent rate",
-    "shortDescription": "Descent rate between landing and loiter altitude.",
+    "shortDescription": "เปอร์เซ็นการร่อนลดระดับความสูง",
     "type":             "double",
     "units":            "%",
     "min":              0.1,

@@ -166,7 +166,7 @@ FlightMap {
     // Add trajectory points to the map
     MapItemView {
         model: _mainIsMap ? _activeVehicle ? _activeVehicle.trajectoryPoints : 0 : 0
-
+        //ตั้งค่าสีเส้นตอนบิน
         delegate: MapPolyline {
             line.width: 3
             line.color: "red"
@@ -269,7 +269,7 @@ FlightMap {
         sourceItem: MissionItemIndexLabel {
             checked:    true
             index:      -1
-            label:      qsTr("Goto here", "Goto here waypoint")
+            label:      qsTr("มาตรงนี้", "มาตรงตำแหน่งนี้")
         }
     }    
 

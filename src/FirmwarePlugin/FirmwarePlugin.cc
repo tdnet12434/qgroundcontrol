@@ -307,7 +307,7 @@ int FirmwarePlugin::remapParamNameHigestMinorVersionNumber(int majorVersionNumbe
 
 QString FirmwarePlugin::vehicleImageOpaque(const Vehicle* vehicle)
 {
-    //Q_UNUSED(vehicle);
+    Q_UNUSED(vehicle);
 //    int id = vehicle->id();
 
 //    if(id==1)

@@ -209,7 +209,7 @@ Item {
             sourceItem:
                 MissionItemIndexLabel {
                 index:      _missionItem.sequenceNumber
-                label:      "Loiter"
+                label:      "บินวนปรับระดับ"
                 checked:    _missionItem.isCurrentItem
 
                 onClicked: _root.clicked(_missionItem.sequenceNumber)
@@ -244,7 +244,7 @@ Item {
             sourceItem:
                 MissionItemIndexLabel {
                 index:      _missionItem.lastSequenceNumber
-                label:      "Land"
+                label:      "ลงจอด"
                 checked:    _missionItem.isCurrentItem
 
                 onClicked: _root.clicked(_missionItem.sequenceNumber)

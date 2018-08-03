@@ -104,7 +104,7 @@ Item {
             z:                          QGroundControl.zOrderTopMost
             color:                      mapPal.text
             font.pointSize:             ScreenTools.largeFontPointSize
-            text:                       qsTr("No GPS Lock for Vehicle")
+            text:                       qsTr("ยังไม่สามารถจับสัญญาณGPSได้")
         }
 
         QGCLabel {
@@ -125,7 +125,7 @@ Item {
             z:                          QGroundControl.zOrderTopMost
             color:                      mapPal.text
             font.pointSize:             ScreenTools.largeFontPointSize
-            text:                       "The vehicle has failed a pre-arm check. In order to arm the vehicle, resolve the failure or disable the arming check via the Safety tab on the Vehicle Setup page."
+            text:                       "ระบบตรวจพบความผิดพลาดก่อนขึ้นบิน กรุณาเช็คแถบตั้งค่าว่าสถานะเซ็นเซอร์ต่างๆหรือไฟต์การบินปกติหรือไม่"
         }
     }
 

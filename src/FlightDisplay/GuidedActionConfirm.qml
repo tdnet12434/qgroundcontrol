@@ -16,7 +16,7 @@ import QGroundControl.Controls      1.0
 import QGroundControl.Palette       1.0
 
 /// Guided actions confirmation dialog
-NoMouseThroughRectangle {
+Rectangle {
     id:             _root
     border.color:   qgcPal.alertBorder
     border.width:   1
@@ -24,7 +24,7 @@ NoMouseThroughRectangle {
     height:         confirmColumn.height + (_margins * 4)
     radius:         ScreenTools.defaultFontPixelHeight / 2
     color:          qgcPal.alertBackground
-    opacity:        0.9
+    opacity:        0.8
     z:              guidedController.z
     visible:        false
 
@@ -75,7 +75,7 @@ NoMouseThroughRectangle {
         // Action confirmation control
         SliderSwitch {
             id:             slider
-            confirmText:    qsTr("Slide to confirm")
+            confirmText:    qsTr("เลื่อนไปทางขวาเพื่อยืนยัน")
             width:          Math.max(implicitWidth, ScreenTools.defaultFontPixelWidth * 30)
 
             onAccept: {

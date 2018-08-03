@@ -145,7 +145,7 @@ Column {
                     spacing:        _margins
 
                     FactCheckBox {
-                        text:       qsTr("Show large compass")
+                        text:       qsTr("ขยายขนาดเข็มทิศ")
                         fact:       _showLargeCompass
                         visible:    _showLargeCompass.visible
 
@@ -162,7 +162,7 @@ Column {
                         anchors.left:   parent.left
                         anchors.right:  parent.right
                         wrapMode:       Text.WordWrap
-                        text:   qsTr("Select the values you want to display:")
+                        text:   qsTr("เลือก meter ที่ต้องการแสดง:")
                     }
 
                     Loader {
@@ -193,7 +193,7 @@ Column {
             QGCLabel {
                 width:      parent.width
                 wrapMode:   Text.WordWrap
-                text:       factGroup ? factGroupName : qsTr("Vehicle must be connected to assign values.")
+                text:       factGroup ? factGroupName : qsTr("ต้องเชื่อมต่อเครื่องบินก่อน")
             }
 
             Repeater {
@@ -254,7 +254,7 @@ Column {
 
                     QGCCheckBox {
                         id:                     _largeCheckBox
-                        text:                   qsTr("Large")
+                        text:                   qsTr("ขนาดใหญ่")
                         checked:                listContains(controller.largeValues, propertyName)
                         enabled:                _addCheckBox.checked
                         onClicked:              updateValues()

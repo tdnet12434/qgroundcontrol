@@ -41,9 +41,10 @@ MapQuickItem {
         height:     vehicleIcon.height
         opacity:    vehicle ? (vehicle.active ? 1.0 : 0.5) : 1.0
 
+        //เปลี่ยนรูปเป็นเน็ตตรงนี้
         Image {
             id:                 vehicleIcon
-            source:             _adsbVehicle ? "/qmlimages/adsbVehicle.svg" : vehicle.vehicleImageOpaque
+            source:             _adsbVehicle ? "/qmlimages/adsbVehicle.svg" : (vehicle.id == 2? "/qmlimages/adsbVehicle.svg":vehicle.vehicleImageOpaque)
             mipmap:             true
             width:              size
             sourceSize.width:   size
@@ -68,7 +69,7 @@ MapQuickItem {
             property string vehicleLabelText: visible ?
                                                   (_adsbVehicle ?
                                                        QGroundControl.metersToAppSettingsDistanceUnits(altitude).toFixed(0) + " " + QGroundControl.appSettingsDistanceUnitsString :
-                                                       (_multiVehicle ? qsTr("Vehicle %1").arg(vehicle.id) : "")) :
+                                                       (_multiVehicle ? (vehicle.id ==2 ?  qsTr("ตาข่ายที่ %1").arg(vehicle.id):qsTr("ลำที่ %1").arg(vehicle.id)) : "")) :
                                                   ""
 
         }
