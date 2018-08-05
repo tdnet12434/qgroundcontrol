@@ -990,9 +990,10 @@ void MissionController::_recalcWaypointLines(void)
     }
 
     bool linkStartToHome = false;
+    bool isTitanSeq = false;
     for (int i=1; i<_visualItems->count(); i++) {
         VisualMissionItem* item = qobject_cast<VisualMissionItem*>(_visualItems->get(i));
-
+//        qInfo() << "commandName() = "<<item->commandName() << " desc = " << item->commandDescription();
 
         // If we still haven't found the first coordinate item and we hit a takeoff command, link back to home
         if (firstCoordinateItem &&
@@ -1005,12 +1006,34 @@ void MissionController::_recalcWaypointLines(void)
         if (item->specifiesCoordinate()) {
             if (!item->isStandaloneCoordinate()) {
                 firstCoordinateItem = false;
-                VisualItemPair pair(lastCoordinateItem, item);
-                if (lastCoordinateItem != _settingsItem || (showHomePosition && linkStartToHome)) {
-                    _addWaypointLineSegment(old_table, pair);
+
+//                 qInfo() << "wp number " << i << " all "<<_visualItems->count();
+
+                if(_visualItems->count()>9 && i==3 && lastCoordinateItem->commandName()=="Loiter"){
+                    lastCoordinateItem = item;
+                    isTitanSeq = true;
+                }else if(isTitanSeq && i==_visualItems->count()-1-5){
+                    lastCoordinateItem = item;
+                }else{
+                    VisualItemPair pair(lastCoordinateItem, item);
+                    if (lastCoordinateItem != _settingsItem || (showHomePosition && linkStartToHome)) {
+                        _addWaypointLineSegment(old_table, pair);
+                    }
+                    lastCoordinateItem = item;
                 }
-                lastCoordinateItem = item;
+
+
             }
+        }
+        //พวกไม่ระบุตำแหน่งทั้งหลาย (change speed brabra)
+        else{
+            if(isTitanSeq && i==_visualItems->count()-1-6){
+                VisualMissionItem* item2 = qobject_cast<VisualMissionItem*>(_visualItems->get(3));
+
+                VisualItemPair pair(lastCoordinateItem, item2);
+                _addWaypointLineSegment(old_table, pair);
+            }
+//            qInfo() << "spwp number " << i << " all "<<_visualItems->count();
         }
     }
     if (linkEndToHome && lastCoordinateItem != _settingsItem && showHomePosition) {

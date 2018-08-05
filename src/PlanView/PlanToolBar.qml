@@ -198,7 +198,7 @@ Rectangle {
         font.pointSize:         ScreenTools.largeFontPointSize
         horizontalAlignment:    Text.AlignHCenter
         verticalAlignment:      Text.AlignVCenter
-        text:                   (_uploading ? "Upload Done.. Downloading Back to GCS":"Done")
+        text:                   (_uploading ? "อัพโหลดเสร็จสิ้น กำลังดึงข้อมูลกลับมาตรวจสอบ":"เสร็จสิ้น")
         visible:                false
     }
 
@@ -221,12 +221,12 @@ Rectangle {
             Layout.alignment:       Qt.AlignHCenter
 
             QGCLabel {
-                text:               qsTr("Selected Waypoint")
+                text:               qsTr("เลือกจุดภารกิจ")
                 Layout.columnSpan:  8
                 font.pointSize:     ScreenTools.smallFontPointSize
             }
 
-            QGCLabel { text: qsTr("Alt diff:"); font.pointSize: _dataFontSize; }
+            QGCLabel { text: qsTr("ความสูงที่เปลี่ยนไป:"); font.pointSize: _dataFontSize; }
             QGCLabel {
                 text:                   _altDifferenceText
                 font.pointSize:         _dataFontSize
@@ -244,14 +244,14 @@ Rectangle {
 
             Item { width: 1; height: 1 }
 
-            QGCLabel { text: qsTr("Distance:"); font.pointSize: _dataFontSize; }
+            QGCLabel { text: qsTr("ระยะทาง:"); font.pointSize: _dataFontSize; }
             QGCLabel {
                 text:                   _distanceText
                 font.pointSize:         _dataFontSize
                 Layout.minimumWidth:    _largeValueWidth
             }
 
-            QGCLabel { text: qsTr("Gradient:"); font.pointSize: _dataFontSize; }
+            QGCLabel { text: qsTr("การไต่ระดับ:"); font.pointSize: _dataFontSize; }
             QGCLabel {
                 text:                   _gradientText
                 font.pointSize:         _dataFontSize
@@ -260,7 +260,7 @@ Rectangle {
 
             Item { width: 1; height: 1 }
 
-            QGCLabel { text: qsTr("Heading:"); font.pointSize: _dataFontSize; }
+            QGCLabel { text: qsTr("ทิศทาง:"); font.pointSize: _dataFontSize; }
             QGCLabel {
                 text:                   _headingText
                 font.pointSize:         _dataFontSize
@@ -281,7 +281,7 @@ Rectangle {
                 font.pointSize:     ScreenTools.smallFontPointSize
             }
 
-            QGCLabel { text: qsTr("Distance:"); font.pointSize: _dataFontSize; }
+            QGCLabel { text: qsTr("ระยะทาง:"); font.pointSize: _dataFontSize; }
             QGCLabel {
                 text:                   _missionDistanceText
                 font.pointSize:         _dataFontSize
@@ -290,14 +290,14 @@ Rectangle {
 
             Item { width: 1; height: 1 }
 
-            QGCLabel { text: qsTr("Max telem dist:"); font.pointSize: _dataFontSize; }
+            QGCLabel { text: qsTr("ระยะสื่อสารไกลสุด:"); font.pointSize: _dataFontSize; }
             QGCLabel {
                 text:                   _missionMaxTelemetryText
                 font.pointSize:         _dataFontSize
                 Layout.minimumWidth:    _largeValueWidth
             }
 
-            QGCLabel { text: qsTr("Time:"); font.pointSize: _dataFontSize; }
+            QGCLabel { text: qsTr("เวลา:"); font.pointSize: _dataFontSize; }
             QGCLabel {
                 text:                   getMissionTime()
                 font.pointSize:         _dataFontSize
@@ -314,12 +314,12 @@ Rectangle {
             visible:                _batteryInfoAvailable
 
             QGCLabel {
-                text:               qsTr("Battery")
+                text:               qsTr("แบตเตอรี่")
                 Layout.columnSpan:  3
                 font.pointSize:     ScreenTools.smallFontPointSize
             }
 
-            QGCLabel { text: qsTr("Batteries required:"); font.pointSize: _dataFontSize; }
+            QGCLabel { text: qsTr("แบตเตอรี่ที่คาดว่าจะใช้:"); font.pointSize: _dataFontSize; }
             QGCLabel {
                 text:                   _batteriesRequiredText
                 font.pointSize:         _dataFontSize
@@ -342,7 +342,7 @@ Rectangle {
         anchors.rightMargin:    _margins
         anchors.right:          parent.right
         anchors.verticalCenter: parent.verticalCenter
-        text:                   _controllerDirty ? qsTr("Upload&Download Required") : qsTr("Upload&Download")
+        text:                   _controllerDirty ? qsTr("ต้องการการอัพโหลดขึ้นลำ") : qsTr("อัพโหลดและดาวน์โหลด")
         enabled:                !_controllerSyncInProgress
         visible:                !_controllerOffline && !_controllerSyncInProgress && !uploadCompleteText.visible
         primary:                _controllerDirty

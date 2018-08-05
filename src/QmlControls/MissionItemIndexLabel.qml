@@ -17,7 +17,7 @@ Canvas {
     property bool   checked:                false
     property bool   small:                  false
     property bool   child:                  false
-    property var    color:                  checked ? "green" : (child ? qgcPal.mapIndicatorChild : qgcPal.mapIndicator)
+    property var    color:                  checked ? "cyan" : (child ? "gray"/*qgcPal.mapIndicatorChild*/ : "black"/*qgcPal.mapIndicator*/)
     property real   anchorPointX:           _height / 2
     property real   anchorPointY:           _height / 2
     property bool   specifiesCoordinate:    true
@@ -36,7 +36,7 @@ Canvas {
     property real   _labelMargin:       2
     property real   _labelRadius:       _indicatorRadius + _labelMargin
     property string _label:             index === 0 ? "" : label
-    property string _index:             index === 0 || index === -1 ? label.charAt(0) : index
+    property string _index:             (index === 0 || index === -1)&& !child  ? label.charAt(0) : (child ? label:index)
 
     onColorChanged:         requestPaint()
     onShowGimbalYawChanged: requestPaint()
@@ -103,7 +103,7 @@ Canvas {
         anchors.top:            indicator.top
         anchors.bottom:         indicator.bottom
         color:                  "white"
-        text:                   "     Type "+missionItem.commandName+"\n     Alt "+  missionItem.coordinate.altitude + "\n     Speed " + missionItem.specifiedFlightSpeed
+        text:                   "     Type "+missionItem.commandName+"\n     Alt "+  missionItem.coordinate.altitude + "\n"
         //text:                   "Alt "+ _altitude.toString()
 //        text:                   QGroundControl.settingsManager.appSettings.altitude
         //text:                   missionItem.speedSection.flightSpeed
@@ -122,9 +122,9 @@ Canvas {
         width:                          _indicatorRadius * 2.5
         height:                         width
 //        color:                          root.color
-        color:                          "black"
-        border.color:                   "#00ffff"
-        border.width:                   2
+        color:                          root.color//"black"
+        border.color:                   "cyan"
+        border.width:                   3
         //radius:                         _indicatorRadius
         radius:                         _indicatorRadius * 2.5
         visible:                        _index !== 'H' || _label !== '1'
@@ -141,7 +141,7 @@ Canvas {
             anchors.fill:           parent
             horizontalAlignment:    Text.AlignHCenter
             verticalAlignment:      Text.AlignVCenter
-            color:                  "white"
+            color:                  (root.checked==true ? "black":"white")
             font.pointSize:         ScreenTools.defaultFontPointSize
             fontSizeMode:           Text.HorizontalFit
             text:                   _index
